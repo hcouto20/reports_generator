@@ -2,7 +2,7 @@ defmodule ReportsGenerator do
 
   def build(filename) do
     "reports/#{filename}"
-    |> File.read()
+    |> File.stream!() #traz struct, não tem o conteudo do arquivo
     |> handle_file("banana")
   end
 
