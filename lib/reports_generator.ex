@@ -3,8 +3,14 @@ defmodule ReportsGenerator do
   def build(filename) do
     "reports/#{filename}"
     |> File.stream!()
-    |> Enum.each(fn elem -> IO.inspect(elem)
+    |> Enum.map(fn line -> parse_line(line)
   end)
+  end
+
+  defp parse_line(line) do
+    line
+    |> String.trim()
+    |> String.split(",")
   end
 
 end
